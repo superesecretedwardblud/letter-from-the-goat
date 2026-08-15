@@ -1,0 +1,126 @@
+const SECRET = ["panda", "pandas", "a panda", "the panda"];
+
+const things = [
+  "The way you laugh at your own jokes before you finish them",
+  "That you notice things nobody else bothers to notice",
+  "How you compliment me on days I've already decided I'm worthless",
+  "The little videos and photos you send me for no reason at all",
+  "That you're beautiful and act like you have no idea",
+  "You and your pandas",
+  "You stayed when leaving would have been easier and fairer",
+  "How you match me no matter how weird I'm being",
+  "How carefully you think about everything, including me",
+  "That talking to you has never once felt like effort",
+  "The way you say my name",
+  "That after everything, you're still who I want to tell things to first"
+];
+
+const total = 4;
+const read = {};
+
+function go(id) {
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  const el = document.getElementById(id);
+  if (el) el.classList.add("active");
+  document.getElementById("back").classList.toggle("hidden", id === "boot" || id === "gate" || id === "hub");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+let tries = 0;
+const hints = [
+  "ACCESS DENIED. TRY AGAIN.",
+  "STILL DENIED. HINT: black and white.",
+  "HINT: you send me pictures of them constantly.",
+  "FINE. IT'S PANDAS. TYPE PANDAS."
+];
+
+function checkCode() {
+  const v = document.getElementById("code").value.trim().toLowerCase();
+  if (SECRET.includes(v)) {
+    document.getElementById("err").textContent = "";
+    go("hub");
+  } else {
+    document.getElementById("err").textContent = hints[Math.min(tries++, hints.length - 1)];
+  }
+}
+
+document.getElementById("code").addEventListener("keydown", e => {
+  if (e.key === "Enter") checkCode();
+});
+
+function unlock(n) {
+  read[n] = true;
+  const btns = document.querySelectorAll(".file");
+  btns[n - 1].classList.add("read");
+
+  const count = Object.keys(read).length;
+  document.getElementById("fill").style.width = (count / total * 100) + "%";
+
+  if (count >= total) {
+    const b = document.getElementById("f5btn");
+    b.classList.remove("locked");
+    b.innerHTML = '<span class="idx">005</span> UNSEALED';
+  }
+  go("hub");
+}
+
+const grid = document.getElementById("grid");
+things.forEach((t, i) => {
+  const d = document.createElement("div");
+  d.className = "tile";
+  d.textContent = "#" + String(i + 1).padStart(2, "0");
+  d.onclick = () => {
+    if (!d.classList.contains("open")) {
+      d.classList.add("open");
+      d.textContent = t;
+    }
+  };
+  grid.appendChild(d);
+});
+
+const bootText = [
+  "ESTABLISHING SECURE CONNECTION...",
+  "SIGNAL FOUND. DISTANCE: IRRELEVANT.",
+  "LOCATING SUBJECT...",
+  "SUBJECT IDENTIFIED: HATSUNE",
+  "5 FILES RECOVERED.",
+  "CLEARANCE REQUIRED."
+];
+
+const box = document.getElementById("bootlines");
+let li = 0;
+
+function typeLine() {
+  if (li >= bootText.length) {
+    document.getElementById("bootbtn").classList.remove("hidden");
+    return;
+  }
+  const p = document.createElement("p");
+  p.style.margin = "0";
+  box.appendChild(p);
+  let ci = 0;
+  const line = bootText[li];
+  const timer = setInterval(() => {
+    p.textContent = line.slice(0, ++ci);
+    if (ci >= line.length) {
+      clearInterval(timer);
+      li++;
+      setTimeout(typeLine, 320);
+    }
+  }, 28);
+}
+typeLine();
+
+const form = document.getElementById("reply");
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  const res = await fetch(form.action, {
+    method: "POST",
+    body: new FormData(form),
+    headers: { Accept: "application/json" }
+  });
+  document.getElementById("sent").textContent = res.ok
+    ? "TRANSMISSION RECEIVED. HE'LL SEE IT."
+    : "TRANSMISSION FAILED. TRY AGAIN.";
+  if (res.ok) form.reset();
+});

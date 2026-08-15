@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLASSIFIED</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="scanlines"></div>
+<div class="vignette"></div>
+
+<main id="stage">
+
+  <section id="boot" class="screen active">
+    <div id="bootlines" class="mono dim"></div>
+    <button class="btn hidden" id="bootbtn" onclick="go('gate')">[ BEGIN ]</button>
+  </section>
+
+  <section id="gate" class="screen">
+    <h2 class="glitch" data-text="IDENTITY VERIFICATION">IDENTITY VERIFICATION</h2>
+    <p class="dim">Only one person on earth can answer this.</p>
+    <p class="prompt">What animal do we compare you to?</p>
+    <input id="code" placeholder="type it" autocomplete="off">
+    <button class="btn" onclick="checkCode()">VERIFY</button>
+    <p id="err" class="err"></p>
+  </section>
+
+  <section id="hub" class="screen">
+    <h2 class="glitch" data-text="SUBJECT: HATSUNE">SUBJECT: HATSUNE</h2>
+    <p class="dim small">Five files recovered. Four are readable. One is sealed until you've read the rest.</p>
+    <div class="bar"><div id="fill"></div></div>
+    <div class="files">
+      <button class="file" onclick="go('f1')"><span class="idx">001</span> IDENTIFICATION</button>
+      <button class="file" onclick="go('f2')"><span class="idx">002</span> INCIDENT LOG</button>
+      <button class="file" onclick="go('f3')"><span class="idx">003</span> OBSERVED PROPERTIES</button>
+      <button class="file" onclick="go('f4')"><span class="idx">004</span> DISTANCE</button>
+      <button class="file locked" id="f5btn" onclick="go('f5')"><span class="idx">005</span> SEALED</button>
+    </div>
+  </section>
+
+  <section id="f1" class="screen">
+    <h2>001 — IDENTIFICATION</h2>
+    <div class="row"><span class="key">DESIGNATION</span><span>Hatsune</span></div>
+    <div class="row"><span class="key">STATUS</span><span>The best thing that's happened to me</span></div>
+    <div class="row"><span class="key">FIRST CONTACT</span><span>A instagram dm... clowning me.</span></div>
+    <div class="row"><span class="key">THREAT LEVEL</span><span>10/10 makes me fold everyday</span></div>
+
+    <h3>OBSERVED ABILITIES</h3>
+    <ul>
+      <li>Can end a bad day in one message</li>
+      <li>Remembers things I said once and didn't think mattered</li>
+      <li>Compliments me like it costs her nothing, on days I can't stand myself</li>
+      <li>Is beautiful in a way that's genuinely unfair, and somehow doesn't seem to know it</li>
+      <li>Matches me exactly, however strange I'm being</li>
+    </ul>
+
+    <h3>KNOWN WEAKNESSES</h3>
+    <ul>
+      <li>Pandas. Immediately. Every time.</li>
+      <li>Me, when I pretend I'm breaking up with her.</li>
+      <li>Me in general cuz im the goat.</li>
+    </ul>
+    <button class="btn" onclick="unlock(1)">MARK AS READ</button>
+  </section>
+
+  <section id="f2" class="screen">
+    <h2>002 — INCIDENT LOG</h2>
+    <p class="dim small">Recovered records. Some of these do not make me look good. They're staying in.</p>
+
+    <div class="card">
+      <span class="tag">INCIDENT 01</span>
+      <p>Her friends were fighting with her, so they came to me. They said things about her that weren't true, and I believed them. That's the part I have to sit with. not that they lied, but that it worked.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">INCIDENT 02</span>
+      <p>What I did next was worse. I pulled away. Went cold. Made it hard on purpose. She had done absolutely nothing, and she was the one holding it together while I decided whether to take strangers at their word over hers.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">INCIDENT 03</span>
+      <p>I blocked her. I want that written down somewhere permanent, because she deserved better than that and I'd rather own it than pretend it never happened. She was still there afterward. I'm still not over that.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">ASSESSMENT</span>
+      <p>She was telling the truth the entire time. When I finally worked that out, she didn't hold it over me once. Not one time. She just let me come back.</p>
+    </div>
+    <button class="btn" onclick="unlock(2)">MARK AS READ</button>
+  </section>
+
+  <section id="f3" class="screen">
+    <h2>003 — OBSERVED PROPERTIES</h2>
+    <p class="dim small">Click each one.</p>
+    <div class="grid" id="grid"></div>
+    <button class="btn" onclick="unlock(3)">MARK AS READ</button>
+  </section>
+
+  <section id="f4" class="screen">
+    <h2>004 — DISTANCE</h2>
+    <p class="serif lead">We haven't met yet.</p>
+    <p class="serif">I've never seen you walk into a room. Never heard you laugh from across a table instead of through a speaker. I don't know how tall you are standing next to me. I don't know what I'll do with my hands the first time I see you.</p>
+    <p class="serif">People treat that like it makes it less real. It's the opposite. There's nothing holding this together except the fact that we keep choosing it. No convenience, no running into each other, no easy version. Just both of us deciding, every single day, that it's worth it.</p>
+    <p class="serif">So when it does happen, I don't think it'll feel like meeting you. I think it'll feel like recognising you.</p>
+    <button class="btn" onclick="unlock(4)">MARK AS READ</button>
+  </section>
+
+  <section id="f5" class="screen">
+    <h2 class="glitch" data-text="005 — SEALED">005 — SEALED</h2>
+    <div class="letter serif">
+      <p>Hatsune,</p>
+      <p>Everything I know about you, I know through a screen, and it's still the most real thing in my life.</p>
+      <p>You're thoughtful in a way I didn't think people still were. You notice things. You remember things. You tell me I'm worth something on the days I've decided I'm not, and you never make it sound like a favour. You make me laugh so hard I forget what I was upset about in the first place. And you meet me exactly where I am, however weird that is, and not once have you made me feel like I'm too much.</p>
+      <p>I wasn't easy. You know that better than anyone. I believed the wrong people, I went quiet on you, I shut the door — and you were still standing there when I opened it. I don't think you understand what that did to me.</p>
+      <p>I don't have the ending of this. We haven't gotten there yet. But I know that whatever I'm doing in ten years, I want to be able to look over and find you there.</p>
+      <p>Until I can say all this to your face, this is what I could build.</p>
+      <p class="sign">Yours, obviously.</p>
+    </div>
+
+    <h3>TRANSMIT A REPLY</h3>
+    <form id="reply" action="https://formspree.io/f/meajlakz" method="POST">
+      <textarea name="message" rows="5" placeholder="Say something back." required></textarea>
+      <input type="hidden" name="_subject" value="She replied.">
+      <button class="btn" type="submit">SEND</button>
+    </form>
+    <p id="sent" class="ok"></p>
+  </section>
+
+</main>
+
+<button id="back" class="back hidden" onclick="go('hub')">‹ RETURN TO FILES</button>
+
+<script src="script.js"></script>
+</body>
+</html>
