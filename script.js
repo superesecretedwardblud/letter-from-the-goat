@@ -119,8 +119,19 @@ form.addEventListener("submit", async e => {
     body: new FormData(form),
     headers: { Accept: "application/json" }
   });
-  document.getElementById("sent").textContent = res.ok
-    ? "TRANSMISSION RECEIVED. HE'LL SEE IT."
-    : "TRANSMISSION FAILED. TRY AGAIN.";
-  if (res.ok) form.reset();
+
+  if (res.ok) {
+    form.reset();
+    document.getElementById("sent").textContent = "TRANSMISSION RECEIVED.";
+    setTimeout(() => {
+      form.style.display = "none";
+      document.getElementById("replyhead").style.display = "none";
+      document.getElementById("sent").textContent = "";
+      const a = document.getElementById("afterword");
+      a.classList.remove("hidden");
+      a.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 1400);
+  } else {
+    document.getElementById("sent").textContent = "TRANSMISSION FAILED. TRY AGAIN.";
+  }
 });
