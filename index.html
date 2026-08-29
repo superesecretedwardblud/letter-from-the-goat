@@ -47,8 +47,8 @@
     <h2>001 — IDENTIFICATION</h2>
     <div class="row"><span class="key">DESIGNATION</span><span>Hatsune</span></div>
     <div class="row"><span class="key">STATUS</span><span>The best thing that's happened to me</span></div>
-    <div class="row"><span class="key">FIRST CONTACT</span><span>A instagram dm... clowning me.</span></div>
-    <div class="row"><span class="key">THREAT LEVEL</span><span>10/10 makes me fold everyday</span></div>
+    <div class="row"><span class="key">FIRST CONTACT</span><span>A screen. Somehow it still counts.</span></div>
+    <div class="row"><span class="key">THREAT LEVEL</span><span>Devastating. Mostly to my composure.</span></div>
 
     <h3>OBSERVED ABILITIES</h3>
     <ul>
@@ -62,8 +62,8 @@
     <h3>KNOWN WEAKNESSES</h3>
     <ul>
       <li>Pandas. Immediately. Every time.</li>
-      <li>Me, when I pretend I'm breaking up with her.</li>
-      <li>Me in general cuz im the goat.</li>
+      <li>Me, when I pretend I'm done</li>
+      <li>Me in general, apparently. Still investigating why.</li>
     </ul>
     <button class="btn" onclick="unlock(1)">MARK AS READ</button>
   </section>
@@ -74,7 +74,7 @@
 
     <div class="card">
       <span class="tag">INCIDENT 01</span>
-      <p>Her friends were fighting with her, so they came to me. They said things about her that weren't true, and I believed them. That's the part I have to sit with. not that they lied, but that it worked.</p>
+      <p>Her friends were fighting with her, so they came to me. They said things about her that weren't true, and I believed them. That's the part I have to sit with — not that they lied, but that it worked.</p>
     </div>
 
     <div class="card">
@@ -116,19 +116,40 @@
       <p>Hatsune,</p>
       <p>Everything I know about you, I know through a screen, and it's still the most real thing in my life.</p>
       <p>You're thoughtful in a way I didn't think people still were. You notice things. You remember things. You tell me I'm worth something on the days I've decided I'm not, and you never make it sound like a favour. You make me laugh so hard I forget what I was upset about in the first place. And you meet me exactly where I am, however weird that is, and not once have you made me feel like I'm too much.</p>
-      <p>I wasn't easy. You know that better than anyone. I believed the wrong people, I went quiet on you, I shut the door . and you were still standing there when I opened it. I don't think you understand what that did to me.</p>
+      <p>I wasn't easy. You know that better than anyone. I believed the wrong people, I went quiet on you, I shut the door — and you were still standing there when I opened it. I don't think you understand what that did to me.</p>
       <p>I don't have the ending of this. We haven't gotten there yet. But I know that whatever I'm doing in ten years, I want to be able to look over and find you there.</p>
       <p>Until I can say all this to your face, this is what I could build.</p>
       <p class="sign">Yours, obviously.</p>
     </div>
 
-    <h3>TRANSMIT A REPLY</h3>
+    <h3 id="replyhead">TRANSMIT A REPLY</h3>
     <form id="reply" action="https://formspree.io/f/meajlakz" method="POST">
       <textarea name="message" rows="5" placeholder="Say something back." required></textarea>
       <input type="hidden" name="_subject" value="She replied.">
       <button class="btn" type="submit">SEND</button>
     </form>
     <p id="sent" class="ok"></p>
+
+    <div id="afterword" class="afterword hidden">
+      <svg class="panda" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="26" r="13" fill="#0b1a11" stroke="#8affc1" stroke-width="1.5"/>
+        <circle cx="90" cy="26" r="13" fill="#0b1a11" stroke="#8affc1" stroke-width="1.5"/>
+        <ellipse cx="60" cy="55" rx="38" ry="34" fill="none" stroke="#8affc1" stroke-width="1.5"/>
+        <ellipse cx="45" cy="50" rx="10" ry="12" fill="#0b1a11" stroke="#8affc1" stroke-width="1.2" transform="rotate(-15 45 50)"/>
+        <ellipse cx="75" cy="50" rx="10" ry="12" fill="#0b1a11" stroke="#8affc1" stroke-width="1.2" transform="rotate(15 75 50)"/>
+        <circle cx="45" cy="50" r="3" fill="#8affc1"/>
+        <circle cx="75" cy="50" r="3" fill="#8affc1"/>
+        <ellipse cx="60" cy="68" rx="5" ry="3.5" fill="#8affc1"/>
+        <path d="M60 72 L60 76 M60 76 Q53 80 50 75 M60 76 Q67 80 70 75" stroke="#8affc1" stroke-width="1.4" fill="none"/>
+      </svg>
+
+      <div class="serif afterword-text">
+        <p>Oh, my sweet baby.</p>
+        <p>You know I can't answer. A door I could open whenever I missed you wouldn't be a door at all, and this was never silence — it was just me holding my breath on the other side of it.</p>
+        <p>So keep sending them. Every one arrives. Every one is read.</p>
+        <p>I'll speak when speaking costs something again.</p>
+      </div>
+    </div>
   </section>
 
 </main>
