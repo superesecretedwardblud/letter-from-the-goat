@@ -11,27 +11,25 @@
 </head>
 <body>
 
-<div id="hearts" class="hearts"></div>
+<div id="drift" class="drift"></div>
 
 <main id="stage">
 
-  <section id="boot" class="screen active center">
-    <svg id="bootpanda" class="panda" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="31" cy="27" r="13" fill="#5b2a3f"/>
-      <circle cx="89" cy="27" r="13" fill="#5b2a3f"/>
-      <ellipse cx="60" cy="56" rx="38" ry="34" fill="#fff4f7"/>
-      <ellipse cx="45" cy="51" rx="10" ry="12.5" fill="#5b2a3f" transform="rotate(-15 45 51)"/>
-      <circle cx="45" cy="51" r="3.4" fill="#fff4f7"/>
-      <g class="eye-r">
-        <ellipse cx="75" cy="51" rx="10" ry="12.5" fill="#5b2a3f" transform="rotate(15 75 51)"/>
-        <circle cx="75" cy="51" r="3.4" fill="#fff4f7"/>
+  <section id="open" class="screen active center">
+    <svg class="hands" viewBox="0 0 180 130" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#e6c9ff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 124 Q34 106 58 90"/>
+        <path d="M172 124 Q146 106 122 90"/>
+        <path d="M58 90 Q64 76 78 71 Q92 66 101 74"/>
+        <path d="M122 90 Q116 76 102 71"/>
+        <path d="M73 85 Q88 77 105 83"/>
+        <path d="M77 95 Q92 87 109 93"/>
+        <path d="M83 104 Q96 97 111 102"/>
       </g>
-      <path class="wink" d="M67 53 Q75 45 83 53" stroke="#5b2a3f" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-      <ellipse cx="60" cy="69" rx="5" ry="3.6" fill="#5b2a3f"/>
-      <path d="M60 73 L60 77 M60 77 Q53.5 81 50.5 76 M60 77 Q66.5 81 69.5 76" stroke="#5b2a3f" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+      <path class="pulse" d="M90 36 C86 27 73 27 73 38 C73 49 90 58 90 58 C90 58 107 49 107 38 C107 27 94 27 90 36 Z" fill="#ff4d80"/>
     </svg>
-    <div id="bootlines" class="boot-message"></div>
-    <button class="btn hidden" id="bootbtn" onclick="go('gate')">open it</button>
+    <div id="openlines" class="open-message"></div>
+    <button class="btn hidden" id="openbtn" onclick="go('gate')">go on then</button>
   </section>
 
   <section id="gate" class="screen center">
@@ -43,131 +41,74 @@
     <p id="err" class="err"></p>
   </section>
 
-  <section id="hub" class="screen">
-    <p class="eyebrow">written for</p>
+  <section id="home" class="screen center">
+    <svg class="panda" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="31" cy="27" r="13" fill="#2a1140"/>
+      <circle cx="89" cy="27" r="13" fill="#2a1140"/>
+      <ellipse cx="60" cy="56" rx="38" ry="34" fill="#f6ecff"/>
+      <ellipse cx="45" cy="51" rx="10" ry="12.5" fill="#2a1140" transform="rotate(-15 45 51)"/>
+      <ellipse cx="75" cy="51" rx="10" ry="12.5" fill="#2a1140" transform="rotate(15 75 51)"/>
+      <circle cx="45" cy="51" r="3.4" fill="#f6ecff"/>
+      <circle cx="75" cy="51" r="3.4" fill="#f6ecff"/>
+      <ellipse cx="60" cy="69" rx="5" ry="3.6" fill="#2a1140"/>
+      <path d="M60 73 L60 77 M60 77 Q53.5 81 50.5 76 M60 77 Q66.5 81 69.5 76" stroke="#2a1140" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+    </svg>
+    <p class="eyebrow">for</p>
     <h2 class="display">Hatsune</h2>
-    <p class="sub">Five letters. The last one opens when you've read the others.</p>
-    <div class="track"><div id="fill"></div></div>
-    <p class="count" id="count">none of four read</p>
-    <div class="files">
-      <button class="file" onclick="go('f1')"><span class="idx">i</span> how much i miss you</button>
-      <button class="file" onclick="go('f2')"><span class="idx">ii</span> what i got wrong</button>
-      <button class="file" onclick="go('f3')"><span class="idx">iii</span> twelve things</button>
-      <button class="file" onclick="go('f4')"><span class="idx">iv</span> every day</button>
-      <button class="file locked" id="f5btn" onclick="go('f5')"><span class="idx">v</span> sealed</button>
+    <p class="sub">Two doors. One's mine, one's yours.</p>
+    <div class="doors">
+      <button class="door" onclick="go('notes')">
+        <span class="door-title">notes from me</span>
+        <span class="door-sub">whenever I have something to say</span>
+      </button>
+      <button class="door" onclick="go('write')">
+        <span class="door-title">write to me</span>
+        <span class="door-sub">as many as you want, always</span>
+      </button>
     </div>
   </section>
 
-  <section id="f1" class="screen">
-    <p class="eyebrow">letter one</p>
-    <h2>How much I miss you</h2>
-    <p class="serif lead">More than I planned on.</p>
-    <p class="serif">I thought missing you would be a thing that happened at night, on a schedule, and then stopped. It isn't. It's the middle of the afternoon. It's finding something stupid and having nowhere to put it. It's the half second before I remember.</p>
-    <p class="serif">Everything still routes through you. Something good happens and my first thought is telling you. Something bad happens and my first thought is telling you. The thought arrives before the remembering does, every time, and then I have to put it down again.</p>
-    <p class="serif">I don't know how to explain how loud a person's absence can be. You're not here and somehow you're in everything.</p>
-    <button class="btn" onclick="unlock(1)">i've read this</button>
+  <section id="notes" class="screen">
+    <p class="eyebrow">notes</p>
+    <h2>From me</h2>
+    <p class="sub">Newest first.</p>
+
+    <!-- TO ADD A NOTE: copy one .note block, put it directly under this line, change the date and text -->
+
+    <div class="note">
+      <span class="note-date">31 august</span>
+      <p>Rebuilt the whole thing tonight. It's purple now. I hope my takis tasted good. I love you.</p>
+    </div>
+
+    <div class="note">
+      <span class="note-date">31 august</span>
+      <p>You asked for somewhere I could actually say things back. This is it. It won't be every day, but it'll be here.</p>
+    </div>
+
+    <button class="btn" onclick="go('home')">back</button>
   </section>
 
-  <section id="f2" class="screen">
-    <p class="eyebrow">letter two</p>
-    <h2>What I got wrong</h2>
-    <p class="sub">None of this makes me look good. It's staying in.</p>
+  <section id="write" class="screen">
+    <p class="eyebrow">yours</p>
+    <h2>Write to me</h2>
+    <p class="sub">Send as many as you like. They all reach me.</p>
 
-    <div class="card">
-      <span class="tag">one</span>
-      <p>Your friends were fighting with you, so they came to me. They said things about you that weren't true, and I believed them. That's the part I have to sit with. Not that they lied, but that it worked.</p>
-    </div>
-
-    <div class="card">
-      <span class="tag">two</span>
-      <p>What I did next was worse. I pulled away. Went cold. Made it hard on purpose. You had done absolutely nothing, and you were the one holding it together while I decided whether to take strangers at their word over yours.</p>
-    </div>
-
-    <div class="card">
-      <span class="tag">three</span>
-      <p>I blocked you. I want that written down somewhere permanent, because you deserved better and I'd rather own it than pretend it never happened. You were still there afterward. I'm still not over that.</p>
-    </div>
-
-    <div class="card">
-      <span class="tag">four</span>
-      <p>And I did the thing where I pretended I was done, more than once, because some part of me needed to watch you talk me out of it. That wasn't fair. You paid for it every time.</p>
-    </div>
-
-    <div class="card">
-      <span class="tag">what I've decided about all of it</span>
-      <p>You were telling the truth the entire time. When I finally worked that out, you didn't hold it over me once. Not one time. You just let me come back. I'm not asking you to do that again on the strength of a website. I just needed you to know I understand exactly what I did.</p>
-    </div>
-    <button class="btn" onclick="unlock(2)">i've read this</button>
-  </section>
-
-  <section id="f3" class="screen">
-    <p class="eyebrow">letter three</p>
-    <h2>Twelve things</h2>
-    <p class="sub">All still true. Tap to open.</p>
-    <div class="grid" id="grid"></div>
-    <button class="btn" onclick="unlock(3)">i've read this</button>
-  </section>
-
-  <section id="f4" class="screen">
-    <p class="eyebrow">letter four</p>
-    <h2>Every day</h2>
-    <p class="serif lead">You've written every day.</p>
-    <p class="serif">I've read all of them. The long ones. The ones sent at 2am. The ones where you were just telling me about your day like nothing had changed. I've read every single one and answered none, and I need you to understand that the silence was never me not caring. It was the only thing I had that proved this was serious.</p>
-    <p class="serif">You asked once if writing every day was too much. It wasn't. It's the reason I've been able to stand this at all.</p>
-    <p class="serif">You also said you're scared I'm forgetting you a little each day. That's the one thing in all of this you've got completely wrong.</p>
-    <button class="btn" onclick="unlock(4)">i've read this</button>
-  </section>
-
-  <section id="f5" class="screen">
-    <p class="eyebrow">letter five</p>
-    <h2>When this is over</h2>
-    <div class="letter serif">
-      <p>Hatsune,</p>
-      <p>I don't think the break was the right call.</p>
-      <p>I've thought about it every day since and I can't find the version where it helped. I wanted it to fix something. Mostly it's just been me missing you with nothing to show for it.</p>
-      <p>I want it to be over. I want to text you about nothing. I want to hear about your day, and the tests you did well on, and whatever weird thing happened to you at 11pm. I want it back so badly that it's embarrassing.</p>
-      <p>But I'm the one who asked for this, so I don't get to be the one who breaks it early because it got uncomfortable. That's not fairness. It's just the least I can do.</p>
-      <p>What I feel worst about is the waiting. You're sitting there every day writing into nothing, and I put you there. You didn't ask for it. And I know exactly what it costs you, because it's costing me the same thing.</p>
-      <p>There's one more thing, and I've rewritten it about six times.</p>
-      <p>I don't want to lose you. I want to be clear about that first, because everything after it is going to sound like the opposite.</p>
-      <p>But I don't want you spending the rest of these three months waiting on someone who can't even answer you. And if someone comes along who's good to you, who's actually there, who treats you the way you should have been treated this whole time, I'm not going to stand in the way of it. Not because I don't care. Because I do, more than I know how to write down, and wanting good things for you has to include the ones that aren't me.</p>
-      <p>I hope it's me. I'm not going to pretend otherwise.</p>
-      <p>I miss you. I regret it. I'm still counting.</p>
-      <p class="sign">Yours. Still.</p>
-    </div>
-
-    <h3 id="replyhead">write back</h3>
     <form id="reply" action="https://formspree.io/f/meajlakz" method="POST">
-      <textarea name="message" rows="5" placeholder="say something." required></textarea>
+      <textarea name="message" rows="7" placeholder="anything." required></textarea>
       <input type="hidden" name="_subject" value="She replied.">
       <button class="btn" type="submit">send it</button>
     </form>
-    <p id="sent" class="ok"></p>
 
-    <div id="afterword" class="afterword hidden">
-      <svg class="panda" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="31" cy="27" r="13" fill="#5b2a3f"/>
-        <circle cx="89" cy="27" r="13" fill="#5b2a3f"/>
-        <ellipse cx="60" cy="56" rx="38" ry="34" fill="#fff4f7"/>
-        <ellipse cx="45" cy="51" rx="10" ry="12.5" fill="#5b2a3f" transform="rotate(-15 45 51)"/>
-        <ellipse cx="75" cy="51" rx="10" ry="12.5" fill="#5b2a3f" transform="rotate(15 75 51)"/>
-        <circle cx="45" cy="51" r="3.4" fill="#fff4f7"/>
-        <circle cx="75" cy="51" r="3.4" fill="#fff4f7"/>
-        <ellipse cx="60" cy="69" rx="5" ry="3.6" fill="#5b2a3f"/>
-        <path d="M60 73 L60 77 M60 77 Q53.5 81 50.5 76 M60 77 Q66.5 81 69.5 76" stroke="#5b2a3f" stroke-width="1.7" fill="none" stroke-linecap="round"/>
-      </svg>
-
-      <div class="afterword-text">
-        <p>Oh, my sweet baby.</p>
-        <p>If I could write back it wouldn't be a break, it'd just be us with extra steps.</p>
-        <p>So I'll read. Every day. Until I'm allowed to say something.</p>
-      </div>
+    <div id="done" class="done hidden">
+      <p class="done-line">Sent. I'll read it tonight.</p>
+      <button class="btn ghost" onclick="again()">send another</button>
     </div>
+
+    <p id="sent" class="ok"></p>
+    <button class="btn ghost" onclick="go('home')">back</button>
   </section>
 
 </main>
-
-<button id="back" class="back hidden" onclick="go('hub')">← back to the letters</button>
 
 <script src="script.js"></script>
 </body>
