@@ -4,7 +4,7 @@ const things = [
   "The way you laugh at your own jokes before you finish them",
   "That you notice things nobody else bothers to notice",
   "How you compliment me on days I've already decided I'm worthless",
-  "The little videos and photos you send me for no reason at all",
+  "The little videos you send me for no reason at all",
   "That you're beautiful and act like you have no idea",
   "You and your pandas",
   "You stayed when leaving would have been easier and fairer",
@@ -16,6 +16,7 @@ const things = [
 ];
 
 const total = 4;
+const words = ["none", "one", "two", "three", "four"];
 const read = {};
 
 function go(id) {
@@ -53,8 +54,8 @@ function unlock(n) {
   document.querySelectorAll(".file")[n - 1].classList.add("read");
 
   const count = Object.keys(read).length;
-  const hs = document.querySelectorAll("#progress .ph");
-  for (let i = 0; i < count && i < hs.length; i++) hs[i].classList.add("on");
+  document.getElementById("fill").style.width = (count / total * 100) + "%";
+  document.getElementById("count").textContent = words[count] + " of four read";
 
   if (count >= total) {
     const b = document.getElementById("f5btn");
@@ -65,7 +66,7 @@ function unlock(n) {
 }
 
 const grid = document.getElementById("grid");
-things.forEach((t, i) => {
+things.forEach(t => {
   const d = document.createElement("div");
   d.className = "tile";
   d.textContent = "♥";
@@ -96,7 +97,7 @@ const bootText = [
 ];
 
 const winkLine = "And no, I'm not talking to someone new. I want you back.";
-const asideLine = "oh yeah — i was thinking about you and decided to revamp the site lol";
+const asideLine = "oh yeah, i was thinking about you and decided to revamp the site lol";
 
 const box = document.getElementById("bootlines");
 
