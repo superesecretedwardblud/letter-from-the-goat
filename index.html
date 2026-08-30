@@ -16,8 +16,22 @@
 
 <main id="stage">
 
-  <section id="boot" class="screen active">
-    <div id="bootlines" class="mono dim"></div>
+  <section id="boot" class="screen active boot">
+    <svg id="bootpanda" class="panda" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="30" cy="26" r="13" fill="#0b1a11" stroke="#8affc1" stroke-width="1.5"/>
+      <circle cx="90" cy="26" r="13" fill="#0b1a11" stroke="#8affc1" stroke-width="1.5"/>
+      <ellipse cx="60" cy="55" rx="38" ry="34" fill="none" stroke="#8affc1" stroke-width="1.5"/>
+      <ellipse cx="45" cy="50" rx="10" ry="12" fill="#0b1a11" stroke="#8affc1" stroke-width="1.2" transform="rotate(-15 45 50)"/>
+      <circle cx="45" cy="50" r="3" fill="#8affc1"/>
+      <g class="eye-r">
+        <ellipse cx="75" cy="50" rx="10" ry="12" fill="#0b1a11" stroke="#8affc1" stroke-width="1.2" transform="rotate(15 75 50)"/>
+        <circle cx="75" cy="50" r="3" fill="#8affc1"/>
+      </g>
+      <path class="wink" d="M66 51 Q75 43 84 51" stroke="#8affc1" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <ellipse cx="60" cy="68" rx="5" ry="3.5" fill="#8affc1"/>
+      <path d="M60 72 L60 76 M60 76 Q53 80 50 75 M60 76 Q67 80 70 75" stroke="#8affc1" stroke-width="1.4" fill="none"/>
+    </svg>
+    <div id="bootlines" class="serif boot-message"></div>
     <button class="btn hidden" id="bootbtn" onclick="go('gate')">[ BEGIN ]</button>
   </section>
 
@@ -143,15 +157,12 @@
         <path d="M60 72 L60 76 M60 76 Q53 80 50 75 M60 76 Q67 80 70 75" stroke="#8affc1" stroke-width="1.4" fill="none"/>
       </svg>
 
-           <div class="serif afterword-text">
-
+      <div class="serif afterword-text">
         <p>Oh, my sweet baby.</p>
-
-        <p>Answering would cost us the whole point of this. Not answering costs me more than you know. You idiot lol, why did you choose to make the break 3 whole months</p>
-
-        <p>Keep writing. I'm still here. I miss you so fucking much. I want you back I regret everything.</p>
-
+        <p>If I could write back it wouldn't be a break, it'd just be us with extra steps.</p>
+        <p>So I'll read. Every day. Until I'm allowed to say something.</p>
       </div>
+    </div>
   </section>
 
 </main>
