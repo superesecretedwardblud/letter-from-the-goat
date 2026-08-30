@@ -79,37 +79,45 @@ things.forEach((t, i) => {
 });
 
 const bootText = [
-  "ESTABLISHING SECURE CONNECTION...",
-  "SIGNAL FOUND. DISTANCE: IRRELEVANT.",
-  "LOCATING SUBJECT...",
-  "SUBJECT IDENTIFIED: HATSUNE",
-  "5 FILES RECOVERED.",
-  "CLEARANCE REQUIRED."
+  "I miss you, my sweet baby.",
+  "I want you back.",
+  "I regret everything."
 ];
 
-const box = document.getElementById("bootlines");
-let li = 0;
+const winkLine = "And no, I'm not talking to someone new. I want you back.";
 
-function typeLine() {
-  if (li >= bootText.length) {
-    document.getElementById("bootbtn").classList.remove("hidden");
-    return;
-  }
+const box = document.getElementById("bootlines");
+
+function typeLine(text, cls, done) {
   const p = document.createElement("p");
-  p.style.margin = "0";
+  if (cls) p.className = cls;
   box.appendChild(p);
   let ci = 0;
-  const line = bootText[li];
   const timer = setInterval(() => {
-    p.textContent = line.slice(0, ++ci);
-    if (ci >= line.length) {
+    p.textContent = text.slice(0, ++ci);
+    if (ci >= text.length) {
       clearInterval(timer);
-      li++;
-      setTimeout(typeLine, 320);
+      done();
     }
-  }, 28);
+  }, 34);
 }
-typeLine();
+
+function runBoot(i) {
+  if (i < bootText.length) {
+    typeLine(bootText[i], null, () => setTimeout(() => runBoot(i + 1), 460));
+    return;
+  }
+  setTimeout(() => {
+    document.getElementById("bootpanda").classList.add("winking");
+    setTimeout(() => {
+      typeLine(winkLine, "wink-line", () => {
+        setTimeout(() => document.getElementById("bootbtn").classList.remove("hidden"), 400);
+      });
+    }, 700);
+  }, 700);
+}
+
+runBoot(0);
 
 const form = document.getElementById("reply");
 form.addEventListener("submit", async e => {
