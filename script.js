@@ -28,10 +28,10 @@ function go(id) {
 
 let tries = 0;
 const hints = [
-  "ACCESS DENIED. TRY AGAIN.",
-  "STILL DENIED. HINT: black and white.",
-  "HINT: you send me pictures of them constantly.",
-  "FINE. IT'S PANDAS. TYPE PANDAS."
+  "that's not it. try again.",
+  "still no. hint: black and white.",
+  "hint: you send me pictures of them constantly.",
+  "fine. it's pandas. type pandas."
 ];
 
 function checkCode() {
@@ -50,16 +50,16 @@ document.getElementById("code").addEventListener("keydown", e => {
 
 function unlock(n) {
   read[n] = true;
-  const btns = document.querySelectorAll(".file");
-  btns[n - 1].classList.add("read");
+  document.querySelectorAll(".file")[n - 1].classList.add("read");
 
   const count = Object.keys(read).length;
-  document.getElementById("fill").style.width = (count / total * 100) + "%";
+  const hs = document.querySelectorAll("#progress .ph");
+  for (let i = 0; i < count && i < hs.length; i++) hs[i].classList.add("on");
 
   if (count >= total) {
     const b = document.getElementById("f5btn");
     b.classList.remove("locked");
-    b.innerHTML = '<span class="idx">005</span> UNSEALED';
+    b.innerHTML = '<span class="idx">v</span> open me';
   }
   go("hub");
 }
@@ -68,7 +68,7 @@ const grid = document.getElementById("grid");
 things.forEach((t, i) => {
   const d = document.createElement("div");
   d.className = "tile";
-  d.textContent = "#" + String(i + 1).padStart(2, "0");
+  d.textContent = "♥";
   d.onclick = () => {
     if (!d.classList.contains("open")) {
       d.classList.add("open");
@@ -78,6 +78,17 @@ things.forEach((t, i) => {
   grid.appendChild(d);
 });
 
+const hearts = document.getElementById("hearts");
+for (let i = 0; i < 22; i++) {
+  const s = document.createElement("span");
+  s.textContent = "♥";
+  s.style.left = Math.random() * 100 + "%";
+  s.style.fontSize = (11 + Math.random() * 17) + "px";
+  s.style.animationDuration = (14 + Math.random() * 16) + "s";
+  s.style.animationDelay = (Math.random() * 18) + "s";
+  hearts.appendChild(s);
+}
+
 const bootText = [
   "I miss you, my sweet baby.",
   "I want you back.",
@@ -85,6 +96,7 @@ const bootText = [
 ];
 
 const winkLine = "And no, I'm not talking to someone new. I want you back.";
+const asideLine = "oh yeah — i was thinking about you and decided to revamp the site lol";
 
 const box = document.getElementById("bootlines");
 
@@ -111,7 +123,11 @@ function runBoot(i) {
     document.getElementById("bootpanda").classList.add("winking");
     setTimeout(() => {
       typeLine(winkLine, "wink-line", () => {
-        setTimeout(() => document.getElementById("bootbtn").classList.remove("hidden"), 400);
+        setTimeout(() => {
+          typeLine(asideLine, "aside", () => {
+            setTimeout(() => document.getElementById("bootbtn").classList.remove("hidden"), 400);
+          });
+        }, 800);
       });
     }, 700);
   }, 700);
@@ -130,7 +146,7 @@ form.addEventListener("submit", async e => {
 
   if (res.ok) {
     form.reset();
-    document.getElementById("sent").textContent = "TRANSMISSION RECEIVED.";
+    document.getElementById("sent").textContent = "sent. he'll see it.";
     setTimeout(() => {
       form.style.display = "none";
       document.getElementById("replyhead").style.display = "none";
@@ -140,6 +156,6 @@ form.addEventListener("submit", async e => {
       a.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 1400);
   } else {
-    document.getElementById("sent").textContent = "TRANSMISSION FAILED. TRY AGAIN.";
+    document.getElementById("sent").textContent = "didn't send. try again?";
   }
 });
