@@ -46,52 +46,36 @@
   <section id="hub" class="screen">
     <p class="eyebrow">written for</p>
     <h2 class="display">Hatsune</h2>
-    <p class="sub">Five letters. Four you can read now. The last one opens when the others are done.</p>
-    <div class="progress" id="progress">
-      <span class="ph">♥</span><span class="ph">♥</span><span class="ph">♥</span><span class="ph">♥</span>
-    </div>
+    <p class="sub">Five letters. The last one opens when you've read the others.</p>
+    <div class="track"><div id="fill"></div></div>
+    <p class="count" id="count">none of four read</p>
     <div class="files">
-      <button class="file" onclick="go('f1')"><span class="idx">i</span> who you are</button>
-      <button class="file" onclick="go('f2')"><span class="idx">ii</span> what happened</button>
-      <button class="file" onclick="go('f3')"><span class="idx">iii</span> things i love</button>
-      <button class="file" onclick="go('f4')"><span class="idx">iv</span> the distance</button>
+      <button class="file" onclick="go('f1')"><span class="idx">i</span> how much i miss you</button>
+      <button class="file" onclick="go('f2')"><span class="idx">ii</span> what i got wrong</button>
+      <button class="file" onclick="go('f3')"><span class="idx">iii</span> twelve things</button>
+      <button class="file" onclick="go('f4')"><span class="idx">iv</span> every day</button>
       <button class="file locked" id="f5btn" onclick="go('f5')"><span class="idx">v</span> sealed</button>
     </div>
   </section>
 
   <section id="f1" class="screen">
     <p class="eyebrow">letter one</p>
-    <h2>Who you are</h2>
-    <div class="row"><span class="key">your name</span><span>Hatsune</span></div>
-    <div class="row"><span class="key">what you are to me</span><span>the best thing that's happened</span></div>
-    <div class="row"><span class="key">where we started</span><span>a screen. it still counted.</span></div>
-
-    <h3>things you can do</h3>
-    <ul>
-      <li>End a bad day in one message</li>
-      <li>Remember things I said once and didn't think mattered</li>
-      <li>Compliment me like it costs you nothing, on days I can't stand myself</li>
-      <li>Be beautiful in a way that's genuinely unfair, and somehow not know it</li>
-      <li>Match me exactly, however strange I'm being</li>
-    </ul>
-
-    <h3>your weaknesses</h3>
-    <ul>
-      <li>Pandas. Immediately. Every time.</li>
-      <li>Me, when I pretend I'm done</li>
-      <li>Me in general, apparently. Still investigating why.</li>
-    </ul>
+    <h2>How much I miss you</h2>
+    <p class="serif lead">More than I planned on.</p>
+    <p class="serif">I thought missing you would be a thing that happened at night, on a schedule, and then stopped. It isn't. It's the middle of the afternoon. It's finding something stupid and having nowhere to put it. It's the half second before I remember.</p>
+    <p class="serif">Everything still routes through you. Something good happens and my first thought is telling you. Something bad happens and my first thought is telling you. The thought arrives before the remembering does, every time, and then I have to put it down again.</p>
+    <p class="serif">I don't know how to explain how loud a person's absence can be. You're not here and somehow you're in everything.</p>
     <button class="btn" onclick="unlock(1)">i've read this</button>
   </section>
 
   <section id="f2" class="screen">
     <p class="eyebrow">letter two</p>
-    <h2>What happened</h2>
-    <p class="sub">Some of this doesn't make me look good. It's staying in.</p>
+    <h2>What I got wrong</h2>
+    <p class="sub">None of this makes me look good. It's staying in.</p>
 
     <div class="card">
       <span class="tag">one</span>
-      <p>Your friends were fighting with you, so they came to me. They said things about you that weren't true, and I believed them. That's the part I have to sit with — not that they lied, but that it worked.</p>
+      <p>Your friends were fighting with you, so they came to me. They said things about you that weren't true, and I believed them. That's the part I have to sit with. Not that they lied, but that it worked.</p>
     </div>
 
     <div class="card">
@@ -101,45 +85,55 @@
 
     <div class="card">
       <span class="tag">three</span>
-      <p>I blocked you. I want that written down somewhere permanent, because you deserved better than that and I'd rather own it than pretend it never happened. You were still there afterward. I'm still not over that.</p>
+      <p>I blocked you. I want that written down somewhere permanent, because you deserved better and I'd rather own it than pretend it never happened. You were still there afterward. I'm still not over that.</p>
     </div>
 
     <div class="card">
-      <span class="tag">what I've decided about it</span>
-      <p>You were telling the truth the entire time. When I finally worked that out, you didn't hold it over me once. Not one time. You just let me come back.</p>
+      <span class="tag">four</span>
+      <p>And I did the thing where I pretended I was done, more than once, because some part of me needed to watch you talk me out of it. That wasn't fair. You paid for it every time.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">what I've decided about all of it</span>
+      <p>You were telling the truth the entire time. When I finally worked that out, you didn't hold it over me once. Not one time. You just let me come back. I'm not asking you to do that again on the strength of a website. I just needed you to know I understand exactly what I did.</p>
     </div>
     <button class="btn" onclick="unlock(2)">i've read this</button>
   </section>
 
   <section id="f3" class="screen">
     <p class="eyebrow">letter three</p>
-    <h2>Things I love</h2>
-    <p class="sub">Twelve of them. Tap to open.</p>
+    <h2>Twelve things</h2>
+    <p class="sub">All still true. Tap to open.</p>
     <div class="grid" id="grid"></div>
     <button class="btn" onclick="unlock(3)">i've read this</button>
   </section>
 
   <section id="f4" class="screen">
     <p class="eyebrow">letter four</p>
-    <h2>The distance</h2>
-    <p class="serif lead">We haven't met yet.</p>
-    <p class="serif">I've never seen you walk into a room. Never heard you laugh from across a table instead of through a speaker. I don't know how tall you are standing next to me. I don't know what I'll do with my hands the first time I see you.</p>
-    <p class="serif">People treat that like it makes it less real. It's the opposite. There's nothing holding this together except the fact that we keep choosing it. No convenience, no running into each other, no easy version. Just both of us deciding, every single day, that it's worth it.</p>
-    <p class="serif">So when it does happen, I don't think it'll feel like meeting you. I think it'll feel like recognising you.</p>
+    <h2>Every day</h2>
+    <p class="serif lead">You've written every day.</p>
+    <p class="serif">I've read all of them. The long ones. The ones sent at 2am. The ones where you were just telling me about your day like nothing had changed. I've read every single one and answered none, and I need you to understand that the silence was never me not caring. It was the only thing I had that proved this was serious.</p>
+    <p class="serif">You asked once if writing every day was too much. It wasn't. It's the reason I've been able to stand this at all.</p>
+    <p class="serif">You also said you're scared I'm forgetting you a little each day. That's the one thing in all of this you've got completely wrong.</p>
     <button class="btn" onclick="unlock(4)">i've read this</button>
   </section>
 
   <section id="f5" class="screen">
     <p class="eyebrow">letter five</p>
-    <h2>The sealed one</h2>
+    <h2>When this is over</h2>
     <div class="letter serif">
       <p>Hatsune,</p>
-      <p>Everything I know about you, I know through a screen, and it's still the most real thing in my life.</p>
-      <p>You're thoughtful in a way I didn't think people still were. You notice things. You remember things. You tell me I'm worth something on the days I've decided I'm not, and you never make it sound like a favour. You make me laugh so hard I forget what I was upset about in the first place. And you meet me exactly where I am, however weird that is, and not once have you made me feel like I'm too much.</p>
-      <p>I wasn't easy. You know that better than anyone. I believed the wrong people, I went quiet on you, I shut the door — and you were still standing there when I opened it. I don't think you understand what that did to me.</p>
-      <p>I don't have the ending of this. We haven't gotten there yet. But I know that whatever I'm doing in ten years, I want to be able to look over and find you there.</p>
-      <p>Until I can say all this to your face, this is what I could build.</p>
-      <p class="sign">Yours, obviously.</p>
+      <p>I don't think the break was the right call.</p>
+      <p>I've thought about it every day since and I can't find the version where it helped. I wanted it to fix something. Mostly it's just been me missing you with nothing to show for it.</p>
+      <p>I want it to be over. I want to text you about nothing. I want to hear about your day, and the tests you did well on, and whatever weird thing happened to you at 11pm. I want it back so badly that it's embarrassing.</p>
+      <p>But I'm the one who asked for this, so I don't get to be the one who breaks it early because it got uncomfortable. That's not fairness. It's just the least I can do.</p>
+      <p>What I feel worst about is the waiting. You're sitting there every day writing into nothing, and I put you there. You didn't ask for it. And I know exactly what it costs you, because it's costing me the same thing.</p>
+      <p>There's one more thing, and I've rewritten it about six times.</p>
+      <p>I don't want to lose you. I want to be clear about that first, because everything after it is going to sound like the opposite.</p>
+      <p>But I don't want you spending the rest of these three months waiting on someone who can't even answer you. And if someone comes along who's good to you, who's actually there, who treats you the way you should have been treated this whole time, I'm not going to stand in the way of it. Not because I don't care. Because I do, more than I know how to write down, and wanting good things for you has to include the ones that aren't me.</p>
+      <p>I hope it's me. I'm not going to pretend otherwise.</p>
+      <p>I miss you. I regret it. I'm still counting.</p>
+      <p class="sign">Yours. Still.</p>
     </div>
 
     <h3 id="replyhead">write back</h3>
