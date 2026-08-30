@@ -140,9 +140,27 @@ h3 {
 .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(224, 143, 168, .5); }
 .hidden { display: none; }
 
-.progress { margin: 20px 0 4px; font-size: 19px; letter-spacing: 8px; }
-.ph { color: var(--line); transition: color .4s ease; }
-.ph.on { color: var(--rose); }
+.track {
+  height: 3px;
+  background: var(--line);
+  border-radius: 3px;
+  margin: 22px 0 8px;
+  overflow: hidden;
+}
+#fill {
+  height: 100%;
+  width: 0%;
+  background: var(--rose);
+  border-radius: 3px;
+  transition: width .6s cubic-bezier(.2,.8,.2,1);
+}
+.count {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--soft);
+  margin: 0;
+}
 
 .files { display: flex; flex-direction: column; gap: 11px; margin-top: 22px; }
 
