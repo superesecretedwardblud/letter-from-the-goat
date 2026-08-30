@@ -99,6 +99,29 @@ h3 {
 .letter p { margin: 0 0 20px; }
 .sign { color: var(--dim); font-style: italic; }
 
+.boot { text-align: center; }
+
+.boot-message p {
+  margin: 0 0 14px;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--green);
+  line-height: 1.6;
+}
+
+.boot-message p.wink-line {
+  font-size: 18px;
+  color: var(--dim);
+  margin-top: 22px;
+}
+
+.boot .panda { margin-bottom: 32px; }
+
+.panda .wink { opacity: 0; transition: opacity .35s ease; }
+.panda .eye-r { transition: opacity .35s ease; }
+.panda.winking .eye-r { opacity: 0; }
+.panda.winking .wink { opacity: 1; }
+
 .btn {
   background: transparent;
   border: 1px solid var(--green);
@@ -213,6 +236,7 @@ textarea { letter-spacing: 0; font-size: 13px; resize: vertical; }
 @media (max-width: 600px) {
   .screen { padding: 26px 20px; }
   .serif { font-size: 17px; }
+  .boot-message p { font-size: 19px; }
   .row { flex-direction: column; gap: 4px; }
   .key { min-width: 0; }
   .panda { width: 92px; }
